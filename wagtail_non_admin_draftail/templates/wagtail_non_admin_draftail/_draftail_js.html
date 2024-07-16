@@ -59,7 +59,14 @@
         }
     }
 
+    function pinToolbar() {
+        if (window.localStorage.getItem("wagtail:draftail-toolbar")==="floating") {
+            window.localStorage.setItem("wagtail:draftail-toolbar", "sticky");
+        }
+    }
+
     loadIconSprite();
+    pinToolbar();
 </script>
 
 <noscript class="capabilitymessage">
@@ -82,7 +89,6 @@
 <script id="wagtail-config" type="application/json">{"CSRF_TOKEN": "", "CSRF_HEADER_NAME": "X-Csrftoken", "ADMIN_URLS": {}, "WAGTAIL_AUTO_UPDATE_PREVIEW": false, "WAGTAIL_AUTO_UPDATE_PREVIEW_INTERVAL": 500}</script>
 
 {# Core scripts used in Wagtail admin #}
-<script src="{% versioned_static 'wagtailadmin/js/vendor/jquery-3.6.0.min.js' %}"></script>
 <script src="{% versioned_static 'wagtailadmin/js/vendor/bootstrap-modal.js' %}"></script>
 <script src="{% url 'wagtailadmin_javascript_catalog' %}"></script>
 <script src="{% versioned_static 'wagtailadmin/js/core.js' %}"></script>
