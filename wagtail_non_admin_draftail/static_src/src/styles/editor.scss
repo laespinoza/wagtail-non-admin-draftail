@@ -39,6 +39,12 @@
     background: #fff !important;
     border-radius: 8px !important;
   }
+
+  .Draftail-Toolbar {
+    .Draftail-ToolbarGroup.Draftail-ToolbarGroup--controls {
+      display: none;
+    }
+  }
 }
 
 .Draftail-Editor--focus, .Draftail-Editor:focus-within {

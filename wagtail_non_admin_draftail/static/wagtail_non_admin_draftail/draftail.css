@@ -37,6 +37,9 @@
   background: #fff !important;
   border-radius: 8px !important;
 }
+.Draftail-Editor__wrapper .Draftail-Toolbar .Draftail-ToolbarGroup.Draftail-ToolbarGroup--controls {
+  display: none;
+}
 
 .Draftail-Editor--focus .Draftail-BlockToolbar__trigger, .Draftail-Editor:focus-within .Draftail-BlockToolbar__trigger {
   visibility: visible;
