@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from wagtail.admin.forms.choosers import (
-    AnchorLinkChooserForm,
     EmailLinkChooserForm,
     ExternalLinkChooserForm,
     PhoneLinkChooserForm,
@@ -149,47 +148,4 @@ def phone_link(request):
             },
         ),
         json_data={"step": "phone_link"},
-    )
-
-
-@login_required
-def anchor_link(request):
-    initial_data = {
-        "link_text": request.GET.get("link_text", ""),
-        "url": request.GET.get("link_url", ""),
-    }
-
-    if request.method == "POST":
-        form = AnchorLinkChooserForm(
-            request.POST, initial=initial_data, prefix="anchor-link-chooser"
-        )
-
-        if form.is_valid():
-            result = {
-                "url": "#" + form.cleaned_data["url"],
-                "title": form.cleaned_data["link_text"].strip()
-                or form.cleaned_data["url"],
-                "prefer_this_title_as_link_text": ("link_text" in form.changed_data),
-            }
-            return render_modal_workflow(
-                request,
-                None,
-                None,
-                None,
-                json_data={"step": "external_link_chosen", "result": result},
-            )
-    else:
-        form = AnchorLinkChooserForm(initial=initial_data, prefix="anchor-link-chooser")
-
-    return render_modal_workflow(
-        request,
-        "wagtail_non_admin_draftail/link/anchor_link.html",
-        None,
-        shared_context(
-            request,
-            {
-                "form": form,
-            },
-        ),
-        json_data={"step": "anchor_link"},
     )

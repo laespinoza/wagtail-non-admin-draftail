@@ -1,7 +1,7 @@
 from django.apps import apps
 from django.urls import path
 
-from .views.link import anchor_link, email_link, external_link, phone_link
+from .views.link import email_link, external_link, phone_link
 
 app_name = "wagtail_non_admin_draftail"
 
@@ -9,7 +9,6 @@ urlpatterns = [
     path("external-link/", external_link, name="external-link"),
     path("email-link/", email_link, name="email-link"),
     path("phone-link/", phone_link, name="phone-link"),
-    path("anchor-link/", anchor_link, name="anchor-link"),
 ]
 
 if apps.is_installed("wagtail.images"):
