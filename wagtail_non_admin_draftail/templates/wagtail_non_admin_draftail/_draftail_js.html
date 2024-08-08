@@ -60,7 +60,8 @@
     }
 
     function pinToolbar() {
-        if (window.localStorage.getItem("wagtail:draftail-toolbar")==="floating") {
+        const toolbarState = window.localStorage.getItem("wagtail:draftail-toolbar");
+        if (toolbarState === "floating" || toolbarState === null) {
             window.localStorage.setItem("wagtail:draftail-toolbar", "sticky");
         }
     }
